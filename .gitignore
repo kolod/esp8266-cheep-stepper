@@ -33,3 +33,5 @@
 
 .pio/
 .vscode/
+/esp8266-cheep-stepper.zip
+/include/*.bak

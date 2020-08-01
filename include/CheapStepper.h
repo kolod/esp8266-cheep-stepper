@@ -35,11 +35,11 @@ public:
 		mSpr = spr;
 		mRpm = rpm;
 
-		mIsStopped = 0;
-		mStepMask = 0;
-		mLastMask = 1;
-		mLimitCW = INT32_MAX;
-		mLimitCCW = INT32_MIN;
+		mIsStopped = true;
+		mStepMask  = 0;
+		mLastMask  = 1;
+		mLimitCW   = INT32_MAX;
+		mLimitCCW  = INT32_MIN;
 
 		if (mRpm < 6 ) mRpm = 6;  // if rpm <6 will overheat
 		if (mRpm > 23) mRpm = 23; // highest speed

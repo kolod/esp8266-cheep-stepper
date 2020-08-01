@@ -21,7 +21,9 @@ extern "C" void CheapStepperTimerISR() {
 	Stepper.step();
 }
  
-CheapStepper::CheapStepper (){}
+CheapStepper::CheapStepper (){
+	mIsStopped = true;
+}
 
 void CheapStepper::step()
 {
