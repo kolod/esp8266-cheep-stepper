@@ -27,11 +27,11 @@ class CheapStepper
 public: 
 	CheapStepper();
 
-	void init(const int in1, const int in2, const int in3, const int in4, int spr, int rpm) {
-		pins[0] = pin1;
-		pins[1] = pin2;
-		pins[2] = pin3;
-		pins[3] = pin4;
+	void init(const int pin1, const int pin2, const int pin3, const int pin4, int spr, int rpm) {
+		mPins[0] = pin1;
+		mPins[1] = pin2;
+		mPins[2] = pin3;
+		mPins[3] = pin4;
 		mSpr = spr;
 		mRpm = rpm;
 
@@ -49,7 +49,7 @@ public:
 
 	// Move spesified steps clockwise
 	void moveCW(int32_t value) {
-		uint32_t setpoint = mPosition + value;
+		auto setpoint = mPosition + value;
 		if (setpoint > mLimitCW) setpoint = mLimitCW;
 		if (mPosition < setpoint) {
 			noInterrupts();
@@ -62,7 +62,7 @@ public:
 
 	// Move spesified steps counterclockwise
 	void moveCCW(int32_t value) {
-		uint32_t setpoint = mPosition - value;
+		auto setpoint = mPosition - value;
 		if (setpoint < mLimitCCW) setpoint = mLimitCCW;
 		if (mPosition > setpoint) {
 			noInterrupts();
@@ -89,7 +89,7 @@ public:
 	}
 
 	void moveToDegree(int32_t value) {
-		moveTo(degreeasToSteps value);
+		moveTo(degreeasToSteps(value));
 	}
 
 	void off() {
@@ -133,6 +133,9 @@ public:
 	void resetPosition() {
 		if (mIsStopped) mSetpoint = mPosition = 0;
 	}
+ 
+	// send step sequence to driver
+	void step();
 
 private:
 	int mPins[4];             // defaults to pins {8,9,10,11} (in1,in2,in3,in4 on the driver board)
@@ -151,8 +154,6 @@ private:
 		hw_timer_set_func(CheapStepperTimerISR);
 		hw_timer_arm(static_cast<uint64_t>(60000000) / (static_cast<uint64_t>(mRpm) * static_cast<uint64_t>(mSpr)));
 	}
- 
-	void step();              // send step sequence to driver
 
 	int32_t degreeasToSteps(const int32_t value) const {
 		return static_cast<int64_t>(value) * mSpr / 360;

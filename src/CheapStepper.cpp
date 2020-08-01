@@ -33,7 +33,7 @@ void CheapStepper::step()
 	};
 
 	// write pattern to pins
-	for (int i = 0; i < 4; i++)  digitalWrite(pins[i], pattern[i] & mStepMask);
+	for (int i = 0; i < 4; i++)  digitalWrite(mPins[i], pattern[i] & mStepMask);
 
 	// calculate next pattern
 	if (!mIsStopped) {
