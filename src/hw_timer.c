@@ -27,9 +27,8 @@ in non autoload mode:
                         10 ~ 0x7fffff;
 * Returns      : NONE
 *******************************************************************************/
-void  hw_timer_arm(u32 val)
-{
-    RTC_REG_WRITE(FRC1_LOAD_ADDRESS, US_TO_RTC_TIMER_TICKS(val));
+void  hw_timer_arm(uint32_t val) {
+    TIMER_REG_WRITE(FRC1_LOAD_ADDRESS, US_TO_RTC_TIMER_TICKS(val));
 }
 
 static void (* user_hw_timer_cb)(void) = NULL;
@@ -64,14 +63,12 @@ u8 req:
                         1,  autoload mode,
 * Returns      : NONE
 *******************************************************************************/
-void ICACHE_FLASH_ATTR hw_timer_init(FRC1_TIMER_SOURCE_TYPE source_type, u8 req)
+void ICACHE_FLASH_ATTR hw_timer_init(FRC1_TIMER_SOURCE_TYPE source_type, uint8_t req)
 {
     if (req == 1) {
-        RTC_REG_WRITE(FRC1_CTRL_ADDRESS,
-                      FRC1_AUTO_LOAD | DIVDED_BY_16 | FRC1_ENABLE_TIMER | TM_EDGE_INT);
+        TIMER_REG_WRITE(FRC1_CTRL_ADDRESS, FRC1_AUTO_LOAD | DIVDED_BY_16 | FRC1_ENABLE_TIMER | TM_EDGE_INT);
     } else {
-        RTC_REG_WRITE(FRC1_CTRL_ADDRESS,
-                      DIVDED_BY_16 | FRC1_ENABLE_TIMER | TM_EDGE_INT);
+        TIMER_REG_WRITE(FRC1_CTRL_ADDRESS, DIVDED_BY_16 | FRC1_ENABLE_TIMER | TM_EDGE_INT);
     }
 
     if (source_type == NMI_SOURCE) {

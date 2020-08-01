@@ -115,7 +115,7 @@ public:
 	} 
 
 	// returns true if moving done
-	bool isReady() const {mIsStopped;}
+	bool isReady() const {return mIsStopped;}
 
 	// set virtual limit switches
 	void setLimits(uint32_t cw, uint32_t ccw) {
