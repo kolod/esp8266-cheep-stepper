@@ -97,8 +97,8 @@ public:
 		mSetpoint = mPosition;
 	}
 
-	void stepCW()  moveCW(1);    // move 1 step clockwise
-	void stepCCW() moveCCW(1);   // move 1 step counter-clockwise
+	void stepCW()  {moveCW(1);}    // move 1 step clockwise
+	void stepCCW() {moveCCW(1);}   // move 1 step counter-clockwise
 
 	int position()  const {return mPosition;}  // returns current position in steps
 	int setpoint()  const {return mSetpoint;}
@@ -106,7 +106,7 @@ public:
 	int spr()       const {return mSpr;}
 
 	// returns steps left in current move 
-	int getStepsLeft() const {
+	int stepsLeft() const {
 		if (mSetpoint > mPosition) {
 			return mSetpoint - mPosition;
 		} else {
