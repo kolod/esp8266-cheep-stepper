@@ -1,0 +1,29 @@
+{
+	"name": "ESP8266 Cheap Stepper",
+	"version": "1.0.0",
+	"description": "An Arduino library for the 28BYJ-48 stepper motor using the ULN2003 driver board on ESP8266.",
+	"keywords": "stepper, motor, ULN2003",
+	"repository":
+	{
+	  "type": "git",
+	  "url": "https://github.com/kolod/esp8266-cheep-stepper.git"
+	},
+	"authors":
+	[
+		{
+			"name": "Aleksandr Kolodkin",
+			"email": "alexandr.kolodkin@gmail.com",
+			"url": "https://github.com/kolod/",
+			"maintainer": true
+		}
+	],
+	"license": "GPL-3.0-or-later",
+	"homepage": "https://github.com/kolod/esp8266-cheep-stepper",
+	"export": {
+		"exclude": [
+			"extra/*"
+		]
+	},
+	"frameworks": "arduino",
+	"platforms": "espressif8266"
+}
