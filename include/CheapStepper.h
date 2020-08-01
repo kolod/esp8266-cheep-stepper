@@ -19,7 +19,7 @@
 #include "Arduino.h"
 #include "hw_timer.h"
 
-external void CheapStepperTimerISR();
+export void CheapStepperTimerISR();
 
 class CheapStepper
 {
@@ -100,9 +100,10 @@ public:
 	void stepCW()  moveCW(1);    // move 1 step clockwise
 	void stepCCW() moveCCW(1);   // move 1 step counter-clockwise
 
-	int getPosition()  const {return mPosition;}  // returns current position in steps
-	int getRpm()       const {return mRpm;}
-	int getSpr()       const {return mSpr;}
+	int position()  const {return mPosition;}  // returns current position in steps
+	int setpoint()  const {return mSetpoint;}
+	int rpm()       const {return mRpm;}
+	int spr()       const {return mSpr;}
 
 	// returns steps left in current move 
 	int getStepsLeft() const {
@@ -162,6 +163,6 @@ private:
 	}
 };
 
-external CheapStepper Stepper;
+export CheapStepper Stepper;
 
 #endif
