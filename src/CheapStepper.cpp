@@ -17,7 +17,7 @@
 #include "Arduino.h"
 #include "CheapStepper.h"
 
-void CheapStepperTimerISR() {
+extern "C" void CheapStepperTimerISR() {
 	Stepper.step();
 }
  

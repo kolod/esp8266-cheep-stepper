@@ -19,7 +19,7 @@
 #include "Arduino.h"
 #include "hw_timer.h"
 
-export void CheapStepperTimerISR();
+extern "C" void CheapStepperTimerISR();
 
 class CheapStepper
 {
@@ -163,6 +163,6 @@ private:
 	}
 };
 
-export CheapStepper Stepper;
+extern CheapStepper Stepper;
 
 #endif
