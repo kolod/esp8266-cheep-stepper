@@ -27,7 +27,7 @@ int seq = 0;
 void setup() {
 
 	// let's just set up a serial connection and test print to the console
-	Serial.begin(9600);
+	Serial.begin(74880);
 	Serial.println("Ready to start moving!");
 
 	// Init stepper
