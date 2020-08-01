@@ -35,22 +35,22 @@ void setup() {
 }
 
 void loop() {
-	if (stepper.isReady()) switch(seq) {
+	if (Stepper.isReady()) switch(seq) {
 		case 0:
 			Serial.println("Move CW 90");
-			stepper.moveDegreesCW(90);
+			Stepper.moveDegreesCW(90);
 			seq = 1;
 			break;
 		
 		case 1:
 			Serial.println("Move CCW 90");
-			stepper.moveDegreesCCW(90);
+			Stepper.moveDegreesCCW(90);
 			seq = 2;
 			break;
 		
 		case 2:
 			Serial.println("Move CW 360");
-			stepper.moveDegreesCW(360);
+			Stepper.moveDegreesCW(360);
 			seq = 3;
 	}
 }
